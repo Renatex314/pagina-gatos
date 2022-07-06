@@ -1,7 +1,9 @@
 const API_URL = 'https://api.thecatapi.com/v1/images/search';
 
+const wrapper = document.querySelector('.wrapper');
 const imageElement = document.querySelector('#image');
-const buttonElement = document.querySelector('#button');
+const buttonElement = document.querySelector('#button-change');
+const toggleElement = document.querySelector('#dark-toggle');
 
 function setImage(url){
     imageElement.setAttribute('src', url);
@@ -31,9 +33,12 @@ async function updateImage(){
     }
 }
 
-buttonElement.addEventListener('click', () => {
-    updateImage();
-});
+function toggleDarkMode(){
+    wrapper.classList.toggle('dark-mode');
+}
+
+toggleElement.addEventListener('click', () => toggleDarkMode());
+buttonElement.addEventListener('click', () => updateImage());
 
 //Carrega a imagem inicial
 updateImage();
